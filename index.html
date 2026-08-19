@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-Day Menu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FDFCF8;
+      color: #1C1917;
+      margin: 0;
+    }
+
+    .serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Language Bar */
+    .lang-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #1C1917;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      height: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .lang-btn {
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .lang-btn:hover {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .lang-btn.active {
+      color: #fff;
+    }
+
+    .lang-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 2px;
+      background: #A3B18A;
+      border-radius: 1px;
+    }
+
+    .lang-btn .flag {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding-top: 48px;
+    }
+
+    /* Header */
+    .menu-header {
+      text-align: center;
+      padding: 56px 24px 40px;
+      background: linear-gradient(180deg, #F0F4EF 0%, #FDFCF8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-header::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(163,177,138,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .menu-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: #1C1917;
+      margin: 0 0 12px 0;
+      position: relative;
+    }
+
+    .menu-header h1 em {
+      color: #344E41;
+      font-style: italic;
+    }
+
+    .menu-header p {
+      font-size: 15px;
+      font-weight: 300;
+      color: #78716C;
+      line-height: 1.6;
+      margin: 0;
+      position: relative;
+    }
+
+    /* Decorative line */
+    .header-line {
+      width: 40px;
+      height: 2px;
+      background: #A3B18A;
+      margin: 20px auto 0;
+      border-radius: 1px;
+      position: relative;
+    }
+
+    /* Week Dividers */
+    .week-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 24px;
+      max-width: 1120px;
+      margin: 0 auto 24px;
+    }
+
+    .week-divider .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #E7E5E4, transparent);
+    }
+
+    .week-divider span {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #A3B18A;
+      white-space: nowrap;
+    }
+
+    /* Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    @media (min-width: 768px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    /* Day Card */
+    .day-card {
+      background: #fff;
+      border: 1px solid #F5F5F0;
+      border-radius: 20px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .day-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, #344E41, #588157, #A3B18A);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .day-card:hover::before {
+      opacity: 1;
+    }
+
+    .day-card:hover {
+      border-color: #E7E5E4;
+      box-shadow: 0 8px 30px rgba(52,78,65,0.08);
+    }
+
+    /* Day Header */
+    .day-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #F5F5F0;
+    }
+
+    .day-head .day-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #1C1917;
+    }
+
+    .day-head .day-name {
+      font-size: 13px;
+      font-weight: 400;
+      color: #A8A29E;
+    }
+
+    /* Meal Row */
+    .meal-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 10px;
+      border-radius: 12px;
+    }
+
+    .meal-row + .meal-row {
+      margin-top: 2px;
+    }
+
+    .meal-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .meal-icon.breakfast {
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      color: #92400E;
+    }
+
+    .meal-icon.lunch {
+      background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+      color: #1E40AF;
+    }
+
+    .meal-icon.dinner {
+      background: linear-gradient(135deg, #E8EDDF, #D4DDCA);
+      color: #344E41;
+    }
+
+    .meal-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .meal-type-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #A8A29E;
+      margin-bottom: 3px;
+    }
+
+    .meal-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1C1917;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .meal-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: #78716C;
+      line-height: 1.5;
+      margin: 3px 0 0 0;
+    }
+
+    /* Footer */
+    .menu-footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid #F5F5F0;
+    }
+
+    .menu-footer p {
+      font-size: 12px;
+      color: #A8A29E;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    /* Smooth scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #D6D3D1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #A8A29E; }
+  </style>
+</head>
+<body>
+
+  <!-- Language Bar -->
+  <div class="lang-bar">
+    <button class="lang-btn active" data-lang="en">
+      <span class="flag">🇬🇧</span>
+      <span>English</span>
+    </button>
+    <button class="lang-btn" data-lang="uk">
+      <span class="flag">🇺🇦</span>
+      <span>Українська</span>
+    </button>
+    <button class="lang-btn" data-lang="cs">
+      <span class="flag">🇨🇿</span>
+      <span>Čeština</span>
+    </button>
+  </div>
+
+  <!-- Main -->
+  <div class="main-content">
+
+    <!-- Header -->
+    <div class="menu-header">
+      <h1 data-i18n="title">14-Day <em>Meal Plan</em></h1>
+      <p data-i18n="subtitle">Breakfast, lunch & dinner — every day, thoughtfully arranged.</p>
+      <div class="header-line"></div>
+    </div>
+
+    <!-- Week 1 Label -->
+    <div class="week-divider" style="margin-top: -8px;">
+      <div class="line"></div>
+      <span data-i18n="week1">Week 1</span>
+      <div class="line"></div>
+    </div>
+
+    <!-- Week 1 Grid -->
+    <div class="menu-grid" id="week1Grid"></div>
+
+    <!-- Week 2 Label -->
+    <div class="week-divider" style="margin-top: 8px;">
+      <div class="line"></div>
+      <span data-i18n="week2">Week 2</span>
+      <div class="line"></div>
+    </div>
+
+    <!-- Week 2 Grid -->
+    <div class="menu-grid" id="week2Grid" style="padding-bottom: 40px;"></div>
+
+    <!-- Footer -->
+    <div class="menu-footer">
+      <p data-i18n="footer">Eat well, every day.</p>
+    </div>
+  </div>
+
+<script>
+const i18n = {
+  en: {
+    title: '14-Day <em>Meal Plan</em>',
+    subtitle: 'Breakfast, lunch & dinner — every day, thoughtfully arranged.',
+    week1: 'Week 1',
+    week2: 'Week 2',
+    footer: 'Eat well, every day.',
+    breakfast: 'Breakfast',
+    lunch: 'Lunch',
+    dinner: 'Dinner',
+    days: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+  },
+  uk: {
+    title: '14-денне <em>меню</em>',
+    subtitle: 'Сніданок, обід та вечеря — кожен день, продумано.',
+    week1: 'Тиждень 1',
+    week2: 'Тиждень 2',
+    footer: 'Їжте смачно, кожного дня.',
+    breakfast: 'Сніданок',
+    lunch: 'Обід',
+    dinner: 'Вечеря',
+    days: ['Понеділок','Вівторок','Середа','Четвер','Пʼятниця','Субота','Неділя']
+  },
+  cs: {
+    title: '14denní <em>Jídelníček</em>',
+    subtitle: 'Snídaně, oběd a večeře — každý den, promyšleně.',
+    week1: '1. týden',
+    week2: '2. týden',
+    footer: 'Jezte dobře, každý den.',
+    breakfast: 'Snídaně',
+    lunch: 'Oběd',
+    dinner: 'Večeře',
+    days: ['Pondělí','Úterý','Středa','Čtvrtek','Pátek','Sobota','Neděle']
+  }
+};
+
+const menuData = {
+  en: [
+    [
+      { b: { n: "Berry Oatmeal Bowl", d: "Rolled oats, mixed berries, honey drizzle, chia seeds" }, l: { n: "Mediterranean Quinoa Bowl", d: "Quinoa, cucumbers, tomatoes, feta, olive oil, lemon" }, dn: { n: "Grilled Lemon Herb Chicken", d: "Chicken breast, roasted potatoes, steamed broccoli, garlic sauce" } },
+      { b: { n: "Avocado Toast & Egg", d: "Sourdough, smashed avocado, poached egg, red pepper flakes" }, l: { n: "Turkey & Spinach Wrap", d: "Whole wheat wrap, turkey slices, spinach, hummus, pickles" }, dn: { n: "Salmon with Asparagus", d: "Pan-seared salmon, roasted asparagus, lemon butter, wild rice" } },
+      { b: { n: "Green Smoothie", d: "Spinach, banana, almond milk, peanut butter, protein powder" }, l: { n: "Lentil Soup & Bread", d: "Red lentil soup with cumin, crusty bread side, mixed greens" }, dn: { n: "Beef Stir-Fry", d: "Sliced beef, bell peppers, broccoli, soy-ginger sauce, jasmine rice" } },
+      { b: { n: "Greek Yogurt Parfait", d: "Greek yogurt, granola, sliced almonds, fresh blueberries" }, l: { n: "Chicken Caesar Salad", d: "Romaine, grilled chicken, parmesan, croutons, Caesar dressing" }, dn: { n: "Shrimp Tacos", d: "Corn tortillas, blackened shrimp, slaw, avocado crema, lime" } },
+      { b: { n: "Banana Pancakes", d: "Fluffy pancakes, sliced banana, maple syrup, walnuts" }, l: { n: "Caprese Panini", d: "Fresh mozzarella, tomato, basil pesto, ciabatta, side salad" }, dn: { n: "Baked Cod & Veggies", d: "Herb-crusted cod, roasted zucchini, cherry tomatoes, quinoa" } },
+      { b: { n: "Eggs Benedict", d: "English muffin, poached eggs, hollandaise, smoked ham, arugula" }, l: { n: "Poke Bowl", d: "Sushi rice, ahi tuna, edamame, mango, avocado, sesame" }, dn: { n: "Mushroom Risotto", d: "Arborio rice, mixed mushrooms, parmesan, white wine, thyme" } },
+      { b: { n: "French Toast", d: "Brioche, cinnamon egg dip, powdered sugar, fresh strawberries" }, l: { n: "Minestrone & Bruschetta", d: "Vegetable minestrone, toasted bread with tomato-basil topping" }, dn: { n: "Roast Chicken Dinner", d: "Whole roasted chicken, mashed potatoes, gravy, green beans" } }
+    ],
+    [
+      { b: { n: "Chia Seed Pudding", d: "Chia seeds, coconut milk, mango puree, toasted coconut flakes" }, l: { n: "Grilled Veggie Flatbread", d: "Naan bread, zucchini, peppers, goat cheese, balsamic glaze" }, dn: { n: "Pork Tenderloin", d: "Herb-crusted pork, sweet potato mash, apple slaw, mustard sauce" } },
+      { b: { n: "Spinach & Feta Omelette", d: "Three eggs, fresh spinach, feta, toast, side of fruit" }, l: { n: "Tuna Nicoise Salad", d: "Seared tuna, green beans, potato, olives, egg, Dijon vinaigrette" }, dn: { n: "Eggplant Parmesan", d: "Breaded eggplant, marinara, mozzarella, basil, spaghetti side" } },
+      { b: { n: "Açaí Bowl", d: "Açaí blend, granola, sliced strawberries, coconut, honey" }, l: { n: "Chicken Burrito Bowl", d: "Brown rice, black beans, grilled chicken, pico, guacamole, salsa" }, dn: { n: "Lamb Chops", d: "Pan-seared lamb, rosemary potatoes, roasted carrots, mint yogurt" } },
+      { b: { n: "Smoked Salmon Bagel", d: "Everything bagel, cream cheese, smoked salmon, capers, onion" }, l: { n: "Thai Peanut Noodles", d: "Rice noodles, peanut sauce, shredded cabbage, carrots, cilantro, lime" }, dn: { n: "Herb-Crusted Tilapia", d: "Baked tilapia, lemon-herb crust, couscous, sautéed spinach" } },
+      { b: { n: "Bacon & Egg Muffin", d: "English muffin, crispy bacon, fried egg, cheese, hot sauce" }, l: { n: "Falafel Plate", d: "Crispy falafel, hummus, tabbouleh, pickles, warm pita" }, dn: { n: "Chicken Tikka Masala", d: "Tandoori chicken, creamy tomato sauce, basmati rice, naan bread" } },
+      { b: { n: "Blueberry Waffles", d: "Belgian waffles, fresh blueberries, whipped cream, maple drizzle" }, l: { n: "Sushi Platter", d: "Assorted nigiri & maki rolls, miso soup, pickled ginger, wasabi" }, dn: { n: "Stuffed Bell Peppers", d: "Ground turkey, rice, black beans, corn, cheese, tomato sauce" } },
+      { b: { n: "Shakshuka", d: "Poached eggs in spiced tomato sauce, feta, cilantro, crusty bread" }, l: { n: "Roasted Beet Salad", d: "Golden & red beets, arugula, goat cheese, candied walnuts, balsamic" }, dn: { n: "Herb Roasted Turkey", d: "Turkey breast, herb butter, roasted root vegetables, cranberry sauce" } }
+    ]
+  ],
+  uk: [
+    [
+      { b: { n: "Ягідна вівсянка", d: "Вівсяні пластівці, суміш ягід, мед, насіння чіа" }, l: { n: "Середземноморська квіноа", d: "Квіноа, огірки, помідори, фета, оливкова олія, лимон" }, dn: { n: "Курка з лимоном та травами", d: "Куряче філе, картопля, броколі на парі, часниковий соус" } },
+      { b: { n: "Тост з авокадо та яйцем", d: "Сирний хліб, авокадо, яйце пашот, червоний перець" }, l: { n: "Шпинатний рол з індичкою", d: "Цільнозерновий рол, індичка, шпинат, хумус, солоні огірки" }, dn: { n: "Лосось зі спаржею", d: "Лосось на сковороді, спаржа, лимонне масло, дикий рис" } },
+      { b: { n: "Зелений смузі", d: "Шпинат, банан, мигдальне молоко, арахісова паста, протеїн" }, l: { n: "Суп з сочевиці та хліб", d: "Червона сочевица з кмином, хрусткий хліб, зелень" }, dn: { n: "Яловичина стір-фрай", d: "Яловичина, болгарський перець, броколі, соєво-імбирний соус, рис" } },
+      { b: { n: "Грецький йогурт з гранолою", d: "Грецький йогурт, гранола, мигдаль, чорниця" }, l: { n: "Салат Цезар з куркою", d: "Ромен, курка гриль, пармезан, крутони, соус Цезар" }, dn: { n: "Тако з креветками", d: "Кукурудзяні тортильї, креветки, салат коулслоу, крема з авокадо" } },
+      { b: { n: "Бананові млинці", d: "Пухкі млинці, банан, кленовий сироп, горіхи" }, l: { n: "Паніні Капрезе", d: "Моцарела, помідор, песто з базиліком, чіабатта, салат" }, dn: { n: "Запечена тріска з овочами", d: "Тріска з травами, кабачок, черрі, квіноа" } },
+      { b: { n: "Яйця Бенедикт", d: "Англійський мафін, яйця пашот, голандський соус, шинка, рукола" }, l: { n: "Поке боул", d: "Суші-рис, тунець, едамаме, манго, авокадо, кунжут" }, dn: { n: "Ризото з грибами", d: "Рис арборіо, змішані гриби, пармезан, біле вино, чебрець" } },
+      { b: { n: "Французькі тости", d: "Бріош, кориця, цукрова пудра, свіжа полуниця" }, l: { n: "Мінестроне та брускетта", d: "Овочевий мінестроне, підсмажений хліб з томатами та базиліком" }, dn: { n: "Рок-курка", d: "Ціла запечена курка, пюре, підлива, стручкова квасоля" } }
+    ],
+    [
+      { b: { n: "Пудинг з насіння чіа", d: "Насіння чіа, кокосове молоко, мангове пюре, кокосова стружка" }, l: { n: "Флятбред з овочами гриль", d: "Наан, кабачок, перець, козиний сир, бальзамічний глазур" }, dn: { n: "Свинина з травами", d: "Свинина з травами, пюре з солодкої картоплі, яблучний салат" } },
+      { b: { n: "Омлет зі шпинатом та фетою", d: "Три яйця, шпинат, фета, тост, фрукти" }, l: { n: "Салат Нісуаз з тунцем", d: "Тунець, зелена квасоля, картопля, оливки, яйце, дижонська заправка" }, dn: { n: "Пармеджана з баклажанами", d: "Паніровані баклажани, маринара, моцарела, базилік, спагеті" } },
+      { b: { n: "Асаї боул", d: "Асаї, гранола, полуниця, кокос, мед" }, l: { n: "Буріто боул з куркою", d: "Коричневий рис, квасоля, курка, піко де гайо, гуакамоле" }, dn: { n: "Відбивні з ягняти", d: "Ягня на сковороді, картопля з розмарином, морква, м'ятний йогурт" } },
+      { b: { n: "Бейгл з лососем", d: "Бейгл, крем-сир, лосось, каперси, цибуля" }, l: { n: "Арахісові локшина тайські", d: "Рисова локшина, арахісовий соус, капуста, морква, кінза, лайм" }, dn: { n: "Тіляпія з травами", d: "Запечена тіляпія, кускус, шпинат на сковороді" } },
+      { b: { n: "Мафін з беконом та яйцем", d: "Англійський мафін, хрусткий бекон, смажене яйце, сир" }, l: { n: "Тарілка з фалафелем", d: "Хрусткий фалафель, хумус, табуле, солоні огірки, піта" }, dn: { n: "Тікка масала з куркою", d: "Курка тандурі, томатний соус, басматі, наан" } },
+      { b: { n: "Вафлі з чорницею", d: "Бельгійські вафлі, чорниця, збиті вершки, кленовий сироп" }, l: { n: "Асорті суші", d: "Нігірі та макі ролли, місо суп, імбир, васабі" }, dn: { n: "Перці фаршировані", d: "Індичка, рис, квасоля, кукурудза, сир, томатний соус" } },
+      { b: { n: "Шакшука", d: "Яйця в пряному томатному соусі, фета, кінза, хліб" }, l: { n: "Салат з печеним буряком", d: "Буряк, рукола, козиний сир, горіхи, бальзамік" }, dn: { n: "Індичка з травами", d: "Індиче філе, масляне масло, коренеплоди, журавлинний соус" } }
+    ]
+  ],
+  cs: [
+    [
+      { b: { n: "Ovesná kaše s bobulemi", d: "Ovesné vločky, směs bobulí, med, chia semínka" }, l: { n: "Středomořská quinoa mísa", d: "Quinoa, okurky, rajčata, feta, olivový olej, citron" }, dn: { n: "Kuřecí s limonkou a bylinkami", d: "Kuřecí prsa, pečené brambory, brokolice, česnekový sos" } },
+      { b: { n: "Avokádový toast s vajíčkem", d: "Kvasný chléb, avokádo, volské oko, červený pepř" }, l: { n: "Wrap s krůtou a špenátem", d: "Celozrnný wrap, krůtí plátky, špenát, hummus, okurky" }, dn: { n: "Losos s chřestem", d: "Losos na pánvi, chřest, citronové máslo, divoká rýže" } },
+      { b: { n: "Zelený smoothie", d: "Špenát, banán, mandlové mléko, arašídové máslo, protein" }, l: { n: "Čočková polévka s chlebem", d: "Červená čočka s kminem, chleba, listový salát" }, dn: { n: "Hovězí stir-fry", d: "Hovězí plátky, papriky, brokolice, sójovo-zázvorový sos, rýže" } },
+      { b: { n: "Řecký jogurt s granolou", d: "Řecký jogurt, granola, mandle, borůvky" }, l: { n: "Caesar salát s kuřecím", d: "Římský salát, kuřecí maso, parmezán, krutony, Caesar dresink" }, dn: { n: "Tacos s krevetami", d: "Kukuřičné tortilly, krevety, coleslaw, avokádová crema, limeta" } },
+      { b: { n: "Banánové palačinky", d: "Vzdušné palačinky, banán, javorový sirup, vlašské ořechy" }, l: { n: "Caprese panini", d: "Mozzarella, rajče, pesto, ciabatta, salát" }, dn: { n: "Pečený treska se zeleninou", d: "Treska s bylinkami, cuketa, cherry rajčata, quinoa" } },
+      { b: { n: "Vejce Benedict", d: "Anglický muffin, vejce pošé, holandská omáčka, šunka, rukola" }, l: { n: "Poke mísa", d: "Sushi rýže, tuňák, edamame, mango, avokádo, sezam" }, dn: { n: "Houbové risotto", d: "Rýže arborio, směs hub, parmezán, bílé víno, tymián" } },
+      { b: { n: "Francouzské toasty", d: "Brioche, skořice, cukrový písek, čerstvé jahody" }, l: { n: "Minestrone a bruschetta", d: "Zeleninový minestrone, opečený chléb s rajčaty a bazalkou" }, dn: { n: "Pečené kuře", d: "Celé pečené kuře, bramborová kaše, šťáva, zelené fazole" } }
+    ],
+    [
+      { b: { n: "Chia pudink", d: "Chia semínka, kokosové mléko, mango pyré, kokosové plátky" }, l: { n: "Zeleninový flatbread", d: "Naan, cuketa, papriky, kozí sýr, balsamico glazura" }, dn: { n: "Vepřová kýta s bylinkami", d: "Vepřová kýta, sladký bramborový pyré, jablkový salát, hořčice" } },
+      { b: { n: "Omeleta se špenátem a fetou", d: "Tři vejce, špenát, feta, toast, ovoce" }, l: { n: "Salát Niçoise s tuňákem", d: "Tuňák, zelené fazole, brambory, olivy, vejce, dijonský dresink" }, dn: { n: "Lilek parmigiana", d: "Panovaný lilek, marinara, mozzarella, bazalka, špagety" } },
+      { b: { n: "Açaí mísa", d: "Açaí, granola, jahody, kokos, med" }, l: { n: "Burrito mísa s kuřecím", d: "Hnědá rýže, fazole, kuře, pico de gallo, guacamole" }, dn: { n: "Jehněčí kotlety", d: "Jehněčí na pánvi, brambory s rozmarýnem, mrkev, mátový jogurt" } },
+      { b: { n: "Bagel s lososem", d: "Všechno bagel, sýrový krém, losos, kapary, cibule" }, l: { n: "Thajské arašídové nudle", d: "Rýžové nudle, arašídový sos, zelí, mrkev, koriandr, limeta" }, dn: { n: "Tilapie s bylinkami", d: "Pečená tilapie, kuskus, špenát na pánvi" } },
+      { b: { n: "Muffin se slaninou a vajíčkem", d: "Anglický muffin, křupavá slanina, smažené vejce, sýr" }, l: { n: "Falafel talíř", d: "Křupavý falafel, hummus, tabouleh, okurky, pita" }, dn: { n: "Chicken tikka masala", d: "Kuřecí tandoori, rajčatový sos, basmati rýže, naan" } },
+      { b: { n: "Vafle s borůvkami", d: "Belgické vafle, borůvky, šlehačka, javorový sirup" }, l: { n: "Sushi assorted", d: "Nigiri a maki rolky, miso polévka, zázvor, wasabi" }, dn: { n: "Plněné papriky", d: "Mletá krůta, rýže, fazole, kukuřice, sýr, rajčatový sos" } },
+      { b: { n: "Šakšuka", d: "Vejce v pikantním rajčatovém sosu, feta, koriandr, chléb" }, l: { n: "Salát s pečenou řepou", d: "Žlutá a červená řepa, rukola, kozí sýr, ořechy, balsamiko" }, dn: { n: "Krocan s bylinkami", d: "Krocaní prsa, bylinkové máslo, kořenová zelenina, brusinkový sos" } }
+    ]
+  ]
+};
+
+let currentLang = "en";
+
+function renderWeek(weekIdx, containerId) {
+  const grid = document.getElementById(containerId);
+  const t = i18n[currentLang];
+  const data = menuData[currentLang][weekIdx];
+  grid.innerHTML = "";
+
+  data.forEach((day, i) => {
+    const dayNum = weekIdx === 0 ? i + 1 : i + 8;
+    const card = document.createElement("div");
+    card.className = "day-card";
+
+    const mealTypes = [
+      { key: "b", label: t.breakfast, icon: "lucide:sunrise", cls: "breakfast" },
+      { key: "l", label: t.lunch, icon: "lucide:sun", cls: "lunch" },
+      { key: "dn", label: t.dinner, icon: "lucide:moon", cls: "dinner" }
+    ];
+
+    const mealsHtml = mealTypes.map(mt => `
+      <div class="meal-row">
+        <div class="meal-icon ${mt.cls}">
+          <span class="iconify" data-icon="${mt.icon}" data-width="15"></span>
+        </div>
+        <div class="meal-info">
+          <div class="meal-type-label">${mt.label}</div>
+          <p class="meal-name">${day[mt.key].n}</p>
+          <p class="meal-desc">${day[mt.key].d}</p>
+        </div>
+      </div>
+    `).join("");
+
+    card.innerHTML = `
+      <div class="day-head">
+        <span class="day-label">${t.days[i]}</span>
+      </div>
+      ${mealsHtml}
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+function renderAll() {
+  const t = i18n[currentLang];
+
+  document.querySelector("[data-i18n='title']").innerHTML = t.title;
+  document.querySelector("[data-i18n='subtitle']").textContent = t.subtitle;
+  document.querySelector("[data-i18n='week1']").textContent = t.week1;
+  document.querySelector("[data-i18n='week2']").textContent = t.week2;
+  document.querySelector("[data-i18n='footer']").textContent = t.footer;
+
+  renderWeek(0, "week1Grid");
+  renderWeek(1, "week2Grid");
+}
+
+// Language buttons
+document.querySelectorAll(".lang-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentLang = btn.dataset.lang;
+    renderAll();
+  });
+});
+
+// Init
+renderAll();
+</script>
+
+</body>
+</html>
