@@ -390,7 +390,7 @@
     </div>
 
     <!-- Week 1 Label -->
-    <div class="week-divider" style="margin-top: -8px;">
+    <div class="week-divider" style="margin-top: 8px;">
       <div class="line"></div>
       <span data-i18n="week1">Week 1</span>
       <div class="line"></div>
@@ -435,21 +435,21 @@ const i18n = {
     dinner: 'Dinner',
 
     days: [
-      'Monday 24.08.2026',
-      'Tuesday 25.08.2026',
-      'Wednesday 26.08.2026',
-      'Thursday 27.08.2026',
-      'Friday 28.08.2026',
-      'Saturday 29.08.2026',
-      'Sunday 30.08.2026',
-
-      'Monday 31.08.2026',
-      'Tuesday 01.09.2026',
       'Wednesday 02.09.2026',
       'Thursday 03.09.2026',
       'Friday 04.09.2026',
       'Saturday 05.09.2026',
-      'Sunday 06.09.2026'
+      'Sunday 06.09.2026',
+      'Monday 07.09.2026',
+      'Tuesday 08.09.2026',
+
+      'Wednesday 09.09.2026',
+      'Thursday 10.09.2026',
+      'Friday 11.09.2026',
+      'Saturday 12.09.2026',
+      'Sunday 13.09.2026',
+      'Monday 14.09.2026',
+      'Tuesday 15.09.2026'
     ]
   },
 
@@ -464,21 +464,21 @@ const i18n = {
     dinner: 'Вечеря',
 
     days: [
-      'Понеділок 24.08.2026',
-      'Вівторок 25.08.2026',
-      'Середа 26.08.2026',
-      'Четвер 27.08.2026',
-      'Пʼятниця 28.08.2026',
-      'Субота 29.08.2026',
-      'Неділя 30.08.2026',
-
-      'Понеділок 31.08.2026',
-      'Вівторок 01.09.2026',
       'Середа 02.09.2026',
       'Четвер 03.09.2026',
       'Пʼятниця 04.09.2026',
       'Субота 05.09.2026',
-      'Неділя 06.09.2026'
+      'Неділя 06.09.2026',
+      'Понеділок 07.09.2026',
+      'Вівторок 08.09.2026',
+
+      'Середа 09.09.2026',
+      'Четвер 10.09.2026',
+      'Пʼятниця 11.09.2026',
+      'Субота 12.09.2026',
+      'Неділя 13.09.2026',
+      'Понеділок 14.09.2026',
+      'Вівторок 15.09.2026'
     ]
   },
 
@@ -493,21 +493,21 @@ const i18n = {
     dinner: 'Večeře',
 
     days: [
-      'Pondělí 24.08.2026',
-      'Úterý 25.08.2026',
-      'Středa 26.08.2026',
-      'Čtvrtek 27.08.2026',
-      'Pátek 28.08.2026',
-      'Sobota 29.08.2026',
-      'Neděle 30.08.2026',
-
-      'Pondělí 31.08.2026',
-      'Úterý 01.09.2026',
       'Středa 02.09.2026',
       'Čtvrtek 03.09.2026',
       'Pátek 04.09.2026',
       'Sobota 05.09.2026',
-      'Neděle 06.09.2026'
+      'Neděle 06.09.2026',
+      'Pondělí 07.09.2026',
+      'Úterý 08.09.2026',
+
+      'Středa 09.09.2026',
+      'Čtvrtek 10.09.2026',
+      'Pátek 11.09.2026',
+      'Sobota 12.09.2026',
+      'Neděle 13.09.2026',
+      'Pondělí 14.09.2026',
+      'Úterý 15.09.2026'
     ]
   }
 
@@ -521,66 +521,44 @@ const menuData = {
     /* WEEK 1 */
     [
       {
-        b: { n: "Muesli", d: "Muesli with milk" },
-        l: { n: "Buckwheat", d: "Buckwheat with a side dish" },
-        dn: { n: "Rice", d: "Rice with a side dish" }
-      },
-
+  b: { n: "Rice", d: "Rice with milk" },
+  l: { n: "Fried potatoes", d: "Fried potatoes with a side dish" },
+  dn: { n: "Buckwheat", d: "Buckwheat with a side dish" }
+},
       {
-        b: { n: "Eggs with a Side Dish", d: "Eggs with a side dish" },
-        l: { n: "Pasta with a Side Dish", d: "Pasta with a side dish" },
-        dn: { n: "Varenyky", d: "Varenyky" }
-      },
-
-      {
-        b: { n: "Muesli", d: "Muesli with milk" },
-        l: { n: "Buckwheat", d: "Buckwheat with a side dish" },
-        dn: {
-          n: "Buckwheat Soup",
-          d: "Buckwheat soup with meatballs, buckwheat, carrots and potatoes"
-        }
-      },
-
-      {
-        b: { n: "Vegetable Salad", d: "Vegetable salad" },
-        l: { n: "Rice", d: "Rice with a side dish" },
-        dn: {
-          n: "Potatoes",
-          d: "Potatoes with butter and a side dish"
-        }
-      },
-
-      {
-        b: { n: "Pancakes", d: "Pancakes with an optional side dish" },
+        b: { n: "Eggs", d: "Eggs with a side dish" },
         l: { n: "Pasta", d: "Pasta with a side dish" },
-        dn: {
-          n: "Plov",
-          d: "Plov with sweetcorn and an optional additional side dish"
-        }
+        dn: { n: "Potatoes", d: "Potatoes with a side dish" }
       },
 
       {
-        b: { n: "Salmon", d: "Salmon with a side dish" },
-        l: {
-          n: "Rice Soup",
-          d: "Rice soup with potatoes, carrots, onions and rice"
-        },
-        dn: {
-          n: "Risotto",
-          d: "Risotto with rice and other ingredients"
-        }
+        b: { n: "Muesli", d: "Muesli with milk" },
+        l: { n: "Buckwheat soup", d: "Buckwheat soup with vegetables" },
+        dn: { n: "Youghurts", d: "Youghurts" }
       },
 
       {
-        b: { n: "Varenyky", d: "Varenyky" },
-        l: {
-          n: "Rice Soup",
-          d: "Rice soup with potatoes, carrots, onions and rice"
-        },
-        dn: {
-          n: "Buckwheat",
-          d: "Buckwheat with a side dish"
-        }
+        b: { n: "Salad", d: "Vegetable salad" },
+        l: { n: "Pasta soup", d: "Pasta soup with vegetables" },
+        dn: { n: "Borsch", d: "Traditional beetroot soup" }
+      },
+
+      {
+        b: { n: "Eggs", d: "Eggs with a side dish" },
+        l: { n: "Potato soup", d: "Potato soup with vegetables" },
+        dn: { n: "Pasta", d: "Pasta with a side dish" }
+      },
+
+      {
+        b: { n: "Muesli", d: "Muesli with milk" },
+        l: { n: "Borsch", d: "Traditional beetroot soup" },
+        dn: { n: "Buckwheat", d: "Buckwheat with a side dish" }
+      },
+
+      {
+        b: { n: "Eggs", d: "Eggs with a side dish" },
+        l: { n: "Pasta soup", d: "Pasta soup with vegetables" },
+        dn: { n: "Potatoes", d: "Potatoes with a side dish" }
       }
     ],
 
@@ -589,43 +567,43 @@ const menuData = {
       {
         b: { n: "Muesli", d: "Muesli with milk" },
         l: { n: "Pasta", d: "Pasta with a side dish" },
-        dn: { n: "Rice", d: "Rice with a side dish" }
+        dn: { n: "Buckwheat", d: "Buckwheat with a side dish" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Eggs", d: "Eggs with a side dish" },
+        l: { n: "Buckwheat soup", d: "Buckwheat soup with vegetables" },
+        dn: { n: "Pasta", d: "Pasta with a side dish" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Muesli", d: "Muesli with milk" },
+        l: { n: "Borsch", d: "Traditional beetroot soup" },
+        dn: { n: "Potatoes", d: "Potatoes with a side dish" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Eggs", d: "Eggs with a side dish" },
+        l: { n: "Potato soup", d: "Potato soup with vegetables" },
+        dn: { n: "Buckwheat", d: "Buckwheat with a side dish" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Salad", d: "Vegetable salad" },
+        l: { n: "Pasta soup", d: "Pasta soup with vegetables" },
+        dn: { n: "Borsch", d: "Traditional beetroot soup" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Muesli", d: "Muesli with milk" },
+        l: { n: "Buckwheat soup", d: "Buckwheat soup with vegetables" },
+        dn: { n: "Pasta", d: "Pasta with a side dish" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Eggs", d: "Eggs with a side dish" },
+        l: { n: "Borsch", d: "Traditional beetroot soup" },
+        dn: { n: "Potatoes", d: "Potatoes with a side dish" }
       }
     ]
 
@@ -637,60 +615,45 @@ const menuData = {
     /* WEEK 1 */
     [
       {
-        b: { n: "Мюслі", d: "Мюслі з молоком" },
-        l: { n: "Гречка", d: "Гречка з гарніром" },
-        dn: { n: "Рис", d: "Рис з гарніром" }
-      },
+  b: { n: "Рис", d: "Рис з молоком" },
+  l: { n: "Смажена картопля", d: "Смажена картопля з гарніром" },
+  dn: { n: "Гречка", d: "Гречка з гарніром" }
+},
 
       {
-        b: { n: "Яйця з гарніром", d: "Яйця з гарніром" },
-        l: { n: "Макарони з гарніром", d: "Макарони з гарніром" },
-        dn: { n: "Вареники", d: "Вареники" }
-      },
-
-      {
-        b: { n: "Мюслі", d: "Мюслі з молоком" },
-        l: { n: "Гречка", d: "Гречка з гарніром" },
-        dn: {
-          n: "Гречаний суп",
-          d: "Гречаний суп з фрикадельками, гречкою, морквою та картоплею"
-        }
-      },
-
-      {
-        b: { n: "Овочевий салат", d: "Овочевий салат" },
-        l: { n: "Рис", d: "Рис з гарніром" },
-        dn: { n: "Картопля", d: "Картопля з маслом та гарніром" }
-      },
-
-      {
-        b: { n: "Млинці", d: "Млинці з можливим гарніром" },
+        b: { n: "Яйця", d: "Яйця з гарніром" },
         l: { n: "Макарони", d: "Макарони з гарніром" },
-        dn: {
-          n: "Плов",
-          d: "Плов з кукурудзою та можливим додатковим гарніром"
-        }
+        dn: { n: "Картопля", d: "Картопля з гарніром" }
       },
 
       {
-        b: { n: "Лосось", d: "Лосось з гарніром" },
-        l: {
-          n: "Рисовий суп",
-          d: "Рисовий суп з картоплею, морквою, цибулею та рисом"
-        },
-        dn: {
-          n: "Різотто",
-          d: "Різотто з рисом та іншими інгредієнтами"
-        }
+        b: { n: "Мюслі", d: "Мюслі з молоком" },
+        l: { n: "Гречаний суп", d: "Гречаний суп з овочами" },
+        dn: { n: "Йогурти", d: "Йогурти" }
       },
 
       {
-        b: { n: "Вареники", d: "Вареники" },
-        l: {
-          n: "Рисовий суп",
-          d: "Рисовий суп з картоплею, морквою, цибулею та рисом"
-        },
+        b: { n: "Салат", d: "Овочевий салат" },
+        l: { n: "Макаронний суп", d: "Суп з макаронами та овочами" },
+        dn: { n: "Борщ", d: "Традиційний борщ" }
+      },
+
+      {
+        b: { n: "Яйця", d: "Яйця з гарніром" },
+        l: { n: "Картопляний суп", d: "Картопляний суп з овочами" },
+        dn: { n: "Макарони", d: "Макарони з гарніром" }
+      },
+
+      {
+        b: { n: "Мюслі", d: "Мюслі з молоком" },
+        l: { n: "Борщ", d: "Традиційний борщ" },
         dn: { n: "Гречка", d: "Гречка з гарніром" }
+      },
+
+      {
+        b: { n: "Яйця", d: "Яйця з гарніром" },
+        l: { n: "Макаронний суп", d: "Суп з макаронами та овочами" },
+        dn: { n: "Картопля", d: "Картопля з гарніром" }
       }
     ],
 
@@ -699,43 +662,43 @@ const menuData = {
       {
         b: { n: "Мюслі", d: "Мюслі з молоком" },
         l: { n: "Макарони", d: "Макарони з гарніром" },
-        dn: { n: "Рис", d: "Рис з гарніром" }
+        dn: { n: "Гречка", d: "Гречка з гарніром" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Яйця", d: "Яйця з гарніром" },
+        l: { n: "Гречаний суп", d: "Гречаний суп з овочами" },
+        dn: { n: "Макарони", d: "Макарони з гарніром" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Мюслі", d: "Мюслі з молоком" },
+        l: { n: "Борщ", d: "Традиційний борщ" },
+        dn: { n: "Картопля", d: "Картопля з гарніром" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Яйця", d: "Яйця з гарніром" },
+        l: { n: "Картопляний суп", d: "Картопляний суп з овочами" },
+        dn: { n: "Гречка", d: "Гречка з гарніром" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Салат", d: "Овочевий салат" },
+        l: { n: "Макаронний суп", d: "Суп з макаронами та овочами" },
+        dn: { n: "Борщ", d: "Традиційний борщ" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Мюслі", d: "Мюслі з молоком" },
+        l: { n: "Гречаний суп", d: "Гречаний суп з овочами" },
+        dn: { n: "Макарони", d: "Макарони з гарніром" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Яйця", d: "Яйця з гарніром" },
+        l: { n: "Борщ", d: "Традиційний борщ" },
+        dn: { n: "Картопля", d: "Картопля з гарніром" }
       }
     ]
 
@@ -747,63 +710,45 @@ const menuData = {
     /* WEEK 1 */
     [
       {
-        b: { n: "Müsli", d: "Müsli s mlékem" },
-        l: { n: "Pohanka", d: "Pohanka s přílohou" },
-        dn: { n: "Rýže", d: "Rýže s přílohou" }
-      },
+  b: { n: "Rýže", d: "Rýže s mlékem" },
+  l: { n: "Smažené brambory", d: "Smažené brambory s přílohou" },
+  dn: { n: "Pohanka", d: "Pohanka s přílohou" }
+},
 
       {
-        b: { n: "Vajíčka s přílohou", d: "Vajíčka s přílohou" },
-        l: {
-          n: "Těstoviny s přílohou",
-          d: "Těstoviny s přílohou"
-        },
-        dn: { n: "Varenyky", d: "Varenyky" }
-      },
-
-      {
-        b: { n: "Müsli", d: "Müsli s mlékem" },
-        l: { n: "Pohanka", d: "Pohanka s přílohou" },
-        dn: {
-          n: "Pohanková polévka",
-          d: "Pohanková polévka s kuličkami, pohánkou, mrkví a bramborami"
-        }
-      },
-
-      {
-        b: { n: "Zeleninový salát", d: "Zeleninový salát" },
-        l: { n: "Rýže", d: "Rýže s přílohou" },
-        dn: { n: "Brambory", d: "Brambory s máslem a přílohou" }
-      },
-
-      {
-        b: { n: "Palačinky", d: "Palačinky s možnou přílohou" },
+        b: { n: "Vajíčka", d: "Vajíčka s přílohou" },
         l: { n: "Těstoviny", d: "Těstoviny s přílohou" },
-        dn: {
-          n: "Plov",
-          d: "Plov s kukuřicí a možnou další přílohou"
-        }
+        dn: { n: "Brambory", d: "Brambory s přílohou" }
       },
 
       {
-        b: { n: "Losos", d: "Losos s přílohou" },
-        l: {
-          n: "Rýžová polévka",
-          d: "Rýžová polévka s brambory, mrkví, cibulí a rýží"
-        },
-        dn: {
-          n: "Risotto",
-          d: "Risotto s rýží a dalšími ingrediencemi"
-        }
+        b: { n: "Müsli", d: "Müsli s mlékem" },
+        l: { n: "Pohanková polévka", d: "Pohanková polévka se zeleninou" },
+        dn: { n: "Yogurty", d: "Yogurty" }
       },
 
       {
-        b: { n: "Varenyky", d: "Varenyky" },
-        l: {
-          n: "Rýžová polévka",
-          d: "Rýžová polévka s brambory, mrkví, cibulí a rýží"
-        },
+        b: { n: "Salát", d: "Zeleninový salát" },
+        l: { n: "Těstovinová polévka", d: "Těstovinová polévka se zeleninou" },
+        dn: { n: "Boršč", d: "Tradiční boršč" }
+      },
+
+      {
+        b: { n: "Vajíčka", d: "Vajíčka s přílohou" },
+        l: { n: "Bramborová polévka", d: "Bramborová polévka se zeleninou" },
+        dn: { n: "Těstoviny", d: "Těstoviny s přílohou" }
+      },
+
+      {
+        b: { n: "Müsli", d: "Müsli s mlékem" },
+        l: { n: "Boršč", d: "Tradiční boršč" },
         dn: { n: "Pohanka", d: "Pohanka s přílohou" }
+      },
+
+      {
+        b: { n: "Vajíčka", d: "Vajíčka s přílohou" },
+        l: { n: "Těstovinová polévka", d: "Těstovinová polévka se zeleninou" },
+        dn: { n: "Brambory", d: "Brambory s přílohou" }
       }
     ],
 
@@ -812,43 +757,43 @@ const menuData = {
       {
         b: { n: "Müsli", d: "Müsli s mlékem" },
         l: { n: "Těstoviny", d: "Těstoviny s přílohou" },
-        dn: { n: "Rýže", d: "Rýže s přílohou" }
+        dn: { n: "Pohanka", d: "Pohanka s přílohou" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Vajíčka", d: "Vajíčka s přílohou" },
+        l: { n: "Pohanková polévka", d: "Pohanková polévka se zeleninou" },
+        dn: { n: "Těstoviny", d: "Těstoviny s přílohou" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Müsli", d: "Müsli s mlékem" },
+        l: { n: "Boršč", d: "Tradiční boršč" },
+        dn: { n: "Brambory", d: "Brambory s přílohou" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Vajíčka", d: "Vajíčka s přílohou" },
+        l: { n: "Bramborová polévka", d: "Bramborová polévka se zeleninou" },
+        dn: { n: "Pohanka", d: "Pohanka s přílohou" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Salát", d: "Zeleninový salát" },
+        l: { n: "Těstovinová polévka", d: "Těstovinová polévka se zeleninou" },
+        dn: { n: "Boršč", d: "Tradiční boršč" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Müsli", d: "Müsli s mlékem" },
+        l: { n: "Pohanková polévka", d: "Pohanková polévka se zeleninou" },
+        dn: { n: "Těstoviny", d: "Těstoviny s přílohou" }
       },
 
       {
-        b: { n: "❌", d: "❌" },
-        l: { n: "❌", d: "❌" },
-        dn: { n: "❌", d: "❌" }
+        b: { n: "Vajíčka", d: "Vajíčka s přílohou" },
+        l: { n: "Boršč", d: "Tradiční boršč" },
+        dn: { n: "Brambory", d: "Brambory s přílohou" }
       }
     ]
 
@@ -872,11 +817,6 @@ function renderWeek(weekIdx, containerId) {
 
   data.forEach((day, i) => {
 
-    /*
-      IMPORTANT:
-      Week 1 uses dates 0–6.
-      Week 2 uses dates 7–13.
-    */
     const dateIndex = weekIdx === 0 ? i : i + 7;
 
     const card = document.createElement("div");
